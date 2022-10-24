@@ -53,12 +53,12 @@ import os as s
 # -----------------------------
 # -----------------------------
 
-def renemaFilesInNumbers(from_,to_):
+def renemaFilesInNumbers(from_,to_, g=''):
     i = 0
     name1 = s.listdir('./'+from_)
     while(i < len(name1)):
     # while(i < 101):
-        s.rename('C:/Users/79042/Pictures/q/'+from_+'/' +name1[i],'./'+to_+'/'+ ''+str(i)+'.jpg')
+        s.rename('C:/Users/79042/Documents/MenOrWomenAI/'+from_+'/' +name1[i],'./'+to_+'/'+ ''+str(i)+g+'.jpg')
         i = i + 1 
 
 # -----------------------------
@@ -67,8 +67,8 @@ def renemaFilesInNumbers(from_,to_):
 # -----------------------------
 # -----------------------------
 
-from PIL import Image
-import PIL.ImageOps
+# from PIL import Image
+# import PIL.ImageOps
 
 def invert(g,b):
 
@@ -82,11 +82,11 @@ def invert(g,b):
 import cv2
 def ResizeImags(from_,to_):
     i = 0
-    name1 = s.listdir('C:/Users/79042/Pictures/q/'+from_)
+    name1 = s.listdir('C:/Users/79042/Documents/MenOrWomenAI/'+from_)
     while( i < len(name1)):
         # invert('C:/Users/79042/Pictures/q/'+from_+'/'+str(i)+'.jpg','./'+to_+'/'+str(i)+'.jpg')
 
-        img = cv2.imread('C:/Users/79042/Pictures/q/'+from_+'/'+str(i)+'.jpg', cv2.IMREAD_UNCHANGED)
+        img = cv2.imread('C:/Users/79042/Documents/MenOrWomenAI/'+from_+'/'+str(i)+'.jpg', cv2.IMREAD_UNCHANGED)
         gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         resized = cv2.resize(gray_image, (299, 299), interpolation = cv2.INTER_AREA)
         # res = cv2.flip(img, 1)
@@ -94,15 +94,15 @@ def ResizeImags(from_,to_):
         # cv2.imwrite('./'+to_+'/'+str(i)+'_.jpg',res)
         i = i + 1
 
-# ResizeImags('b','v')
+# ResizeImags('g','h')
 
 
 import os
 import cv2
 import numpy as np
 
-from PIL import Image
-from PIL import ImageChops
+# from PIL import Image
+# from PIL import ImageChops
 
 def deleteDubl(pg1,pg2):
 
@@ -134,3 +134,24 @@ def deleteDubl(pg1,pg2):
         os.rename('./'+pg1+'/'+q[0],'./'+pg2+'/'+str(i)+'.jpg')
 
 
+# renemaFilesInNumbers('men', 'M')
+# renemaFilesInNumbers('women', 'W')
+
+# ResizeImags('M','men')
+# ResizeImags('W','women')
+
+
+
+def moveFile(p):
+    i = 0
+    os.mkdir("new")
+    os.mkdir("new/folder")
+    os.mkdir("NewPic")
+
+
+    while( i < len(os.listdir(p))):
+        renemaFilesInNumbers(p+'/'+os.listdir(p)[i],'/new/folder',str(i))
+        i = i + 1
+
+    renemaFilesInNumbers('new/folder','NewPic')
+moveFile('v')
