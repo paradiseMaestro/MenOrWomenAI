@@ -3,9 +3,6 @@ import tensorflow.keras
 import os
 import keras
 import numpy as np
-# библиотека для вывода изображений
-# import matplotlib.pyplot as plt
-# %matplotlib inline
 import cv2
 
 from keras.models import Sequential
@@ -14,6 +11,29 @@ from keras.layers import Dense, Dropout , Conv3D , Flatten, MaxPooling2D
 from tensorflow.keras.layers import BatchNormalization
 from keras.layers import Activation
 from keras.models import load_model
+
+
+
+
+
+
+
+model = Sequential()
+model.add(tf.keras.layers.Conv2D( 2, 3, activation='relu', padding="same", input_shape=(299,299,1)))
+model.add(MaxPooling2D())
+model.add(tf.keras.layers.Conv2D( 2, 3, activation='relu', padding="same"))
+model.add(MaxPooling2D())
+model.add(Flatten())
+model.add(Dense(512,activation='relu'))
+model.add(Dense(412,activation='relu'))
+model.add(Dense(128,activation='relu'))
+model.add(Dense(64,activation='relu'))
+model.add(Dense(2,activation='softmax'))
+
+
+model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+
 
 data = []
 data1 = []
@@ -31,30 +51,8 @@ while (i < 3000):
   i = i + 1
 
 
-
-
-
-# model = Sequential()
-# model.add(tf.keras.layers.Conv2D( 2, 3, activation='relu', padding="same", input_shape=(299,299,1)))
-# model.add(MaxPooling2D())
-# model.add(tf.keras.layers.Conv2D( 2, 3, activation='relu', padding="same"))
-# model.add(MaxPooling2D())
-# # model.add(tf.keras.layers.Conv2D( 2, 3, activation='relu', padding="same"))
-# # model.add(MaxPooling2D())
-# model.add(Flatten())
-# model.add(Dense(512,activation='relu'))
-# model.add(Dense(412,activation='relu'))
-# model.add(Dense(128,activation='relu'))
-# model.add(Dense(64,activation='relu'))
-# model.add(Dense(2,activation='softmax'))
-
-
-# model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-model = load_model('AI.h5')
-
 model.fit(np.array(data), np.array(data1) ,      epochs=7 )
 
-model.save('AI.h5')
 
 
 

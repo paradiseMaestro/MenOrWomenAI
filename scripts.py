@@ -58,7 +58,7 @@ def renemaFilesInNumbers(from_,to_, g=''):
     name1 = s.listdir('./'+from_)
     while(i < len(name1)):
     # while(i < 101):
-        s.rename('C:/Users/79042/Documents/MenOrWomenAI/'+from_+'/' +name1[i],'./'+to_+'/'+ ''+str(i)+g+'.jpg')
+        s.rename(os.getcwd()+'/'+from_+'/' +name1[i],'./'+to_+'/'+ ''+str(i)+g+'.jpg')
         i = i + 1 
 
 # -----------------------------
@@ -82,11 +82,11 @@ def invert(g,b):
 import cv2
 def ResizeImags(from_,to_):
     i = 0
-    name1 = s.listdir('C:/Users/79042/Documents/MenOrWomenAI/'+from_)
+    name1 = s.listdir(os.getcwd()+'/'+from_)
     while( i < len(name1)):
         # invert('C:/Users/79042/Pictures/q/'+from_+'/'+str(i)+'.jpg','./'+to_+'/'+str(i)+'.jpg')
 
-        img = cv2.imread('C:/Users/79042/Documents/MenOrWomenAI/'+from_+'/'+str(i)+'.jpg', cv2.IMREAD_UNCHANGED)
+        img = cv2.imread(os.getcwd()+'/'+from_+'/'+str(i)+'.jpg', cv2.IMREAD_UNCHANGED)
         gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         resized = cv2.resize(gray_image, (299, 299), interpolation = cv2.INTER_AREA)
         # res = cv2.flip(img, 1)
@@ -94,7 +94,7 @@ def ResizeImags(from_,to_):
         # cv2.imwrite('./'+to_+'/'+str(i)+'_.jpg',res)
         i = i + 1
 
-# ResizeImags('g','h')
+# ResizeImags('NewPic','h')
 
 
 import os
@@ -154,4 +154,16 @@ def moveFile(p):
         i = i + 1
 
     renemaFilesInNumbers('new/folder','NewPic')
-moveFile('v')
+# moveFile('Man')
+
+
+# img = cv2.imread('0.jpg', cv2.IMREAD_UNCHANGED)
+# gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+# resized = cv2.resize(gray_image, (149, 149), interpolation = cv2.INTER_AREA)
+# # res = cv2.flip(img, 1)
+# cv2.imwrite('0_.jpg',resized)
+
+
+# renemaFilesInNumbers('men','M')
+# renemaFilesInNumbers('done','W')
+print(os.getcwd())
