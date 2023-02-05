@@ -18,7 +18,7 @@ def more(h):
   index, max_value = max(enumerate(numbers), key=lambda i_v: i_v[1])
   return index
 
-model = load_model('AI.h5')
+model = load_model('my_model.h5')
 # i = 0
 # n = model.predict(
 #     np.array(
@@ -34,11 +34,11 @@ model = load_model('AI.h5')
 #   index, max_value = max(enumerate(numbers), key=lambda i_v: i_v[1])
 #   return index
 
-i = 58884
-while ( i < 81982):
+i = 0
+while ( i < 15000):
     n = model.predict(
         np.array(
-    [np.array(cv2.imread('./h/'+str(i)+'.jpg', cv2.IMREAD_UNCHANGED))/255]
+    [np.array(cv2.imread('./I/'+str(i)+'.jpg', cv2.IMREAD_UNCHANGED))/255]
         )
     )
 

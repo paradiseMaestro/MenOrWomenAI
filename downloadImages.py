@@ -1,7 +1,7 @@
 import shutil
 import time
 import requests
-
+import os
 def Q(f):
     os.mkdir(f)
     i = 0
@@ -12,5 +12,5 @@ def Q(f):
             shutil.copyfileobj(response.raw, out_file)
         del response
         i = i + 1
-        time.sleep(1)
+        time.sleep(2)
 Q('e')

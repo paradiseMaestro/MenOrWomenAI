@@ -66,6 +66,11 @@ def renemaFilesInNumbers(from_,to_, g=''):
 # -----------------------------
 # -----------------------------
 # -----------------------------
+# renemaFilesInNumbers(
+#     # 'M','Mm'
+#     'Ww','W'
+# )
+
 
 # from PIL import Image
 # import PIL.ImageOps
@@ -88,13 +93,13 @@ def ResizeImags(from_,to_):
 
         img = cv2.imread(os.getcwd()+'/'+from_+'/'+str(i)+'.jpg', cv2.IMREAD_UNCHANGED)
         gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        resized = cv2.resize(gray_image, (299, 299), interpolation = cv2.INTER_AREA)
+        resized = cv2.resize(gray_image, (100, 100), interpolation = cv2.INTER_AREA)
         # res = cv2.flip(img, 1)
         cv2.imwrite('./'+to_+'/'+str(i)+'.jpg',resized)
         # cv2.imwrite('./'+to_+'/'+str(i)+'_.jpg',res)
         i = i + 1
 
-# ResizeImags('NewPic','h')
+ResizeImags('M','MM')
 
 
 import os
@@ -154,7 +159,7 @@ def moveFile(p):
         i = i + 1
 
     renemaFilesInNumbers('new/folder','NewPic')
-# moveFile('Man')
+# moveFile('faces01_02')
 
 
 # img = cv2.imread('0.jpg', cv2.IMREAD_UNCHANGED)
@@ -166,4 +171,4 @@ def moveFile(p):
 
 # renemaFilesInNumbers('men','M')
 # renemaFilesInNumbers('done','W')
-print(os.getcwd())
+# print(os.getcwd())
